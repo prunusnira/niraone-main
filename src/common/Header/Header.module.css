@@ -1,0 +1,139 @@
+.siteHeader {
+  position: sticky;
+  z-index: 50;
+  top: 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--header);
+  backdrop-filter: blur(18px);
+}
+
+.headerInner {
+  display: flex;
+  width: min(1320px, calc(100% - 40px));
+  height: 74px;
+  margin-inline: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.17em;
+}
+
+.wordmarkMark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 50%;
+  color: #07110e;
+  background: #75fbd3;
+  font-size: 0.84rem;
+  letter-spacing: 0;
+}
+
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+
+.navLink {
+  padding: 10px 11px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 650;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.navLink:hover,
+.navLink.active {
+  color: var(--foreground);
+  background: var(--surface);
+}
+
+.navLinkFeatured {
+  margin-left: 6px;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.menuButton {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  place-content: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menuButton span {
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+}
+
+.mobileNav {
+  display: grid;
+  max-height: 0;
+  overflow: hidden;
+  padding-inline: 20px;
+  background: var(--background);
+  opacity: 0;
+  transition: max-height 300ms ease, opacity 200ms ease, padding 300ms ease;
+}
+
+.mobileNav.open {
+  max-height: 520px;
+  padding-block: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  opacity: 1;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 2px;
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+  font-weight: 720;
+}
+
+.mobileNavLink span:last-child {
+  color: var(--muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+}
+
+.mobileNavLink.featured {
+  color: #089c78;
+}
+
+@media (min-width: 700px) {
+  .headerInner {
+    width: min(1320px, calc(100% - 72px));
+  }
+}
+
+@media (min-width: 1060px) {
+  .desktopNav {
+    display: flex;
+  }
+
+  .menuButton,
+  .mobileNav {
+    display: none;
+  }
+}

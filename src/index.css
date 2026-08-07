@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #080a10;
+  --color-paper: #f4f2ed;
+  --color-electric: #75fbd3;
+  --font-sans: Inter, Pretendard, "Noto Sans KR", system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light dark;
+  font-family: var(--font-sans);
+  color: #11131a;
+  background: #f4f2ed;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --background: #f4f2ed;
+  --surface: #ebe8e1;
+  --surface-raised: #ffffff;
+  --foreground: #101218;
+  --muted: #666973;
+  --border: rgba(16, 18, 24, 0.14);
+  --header: rgba(244, 242, 237, 0.84);
+  --grid: rgba(16, 18, 24, 0.06);
+  --shadow: 0 30px 70px rgba(21, 21, 24, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #f3f2ee;
+    background: #080a10;
+    --background: #080a10;
+    --surface: #11141d;
+    --surface-raised: #171b26;
+    --foreground: #f3f2ee;
+    --muted: #a0a3ad;
+    --border: rgba(255, 255, 255, 0.13);
+    --header: rgba(8, 10, 16, 0.82);
+    --grid: rgba(255, 255, 255, 0.055);
+    --shadow: 0 30px 80px rgba(0, 0, 0, 0.36);
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--background); color: var(--foreground); }
+body, button, a { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button { color: inherit; }
+::selection { color: #07110e; background: #75fbd3; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

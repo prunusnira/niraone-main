@@ -1,0 +1,34 @@
+.notFound {
+  width: min(1240px, calc(100% - 40px));
+  min-height: 70vh;
+  margin-inline: auto;
+  padding-block: 130px;
+}
+
+.eyebrow {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.notFound h1 {
+  margin: 0 0 20px;
+  font-size: clamp(3rem, 7vw, 6rem);
+  letter-spacing: -0.06em;
+}
+
+.notFound > p:not(.eyebrow) { color: var(--muted); }
+
+.textLink {
+  display: inline-block;
+  margin-top: 30px;
+  border-bottom: 1px solid currentColor;
+  font-weight: 700;
+}
+
+@media (min-width: 700px) {
+  .notFound { width: min(1240px, calc(100% - 72px)); }
+}

@@ -1,0 +1,40 @@
+.appShell {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.skipLink {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  transform: translateY(-180%);
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
+.siteFooter {
+  display: flex;
+  width: min(1320px, calc(100% - 40px));
+  margin-inline: auto;
+  padding-block: 26px;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 700px) {
+  .siteFooter {
+    width: min(1320px, calc(100% - 72px));
+  }
+}
