@@ -1,31 +1,31 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
+import { renderWithRouter } from '../../../test/renderWithRouter'
 import { SiteLinkCard } from './SiteLinkCard'
 
 describe('SiteLinkCard', () => {
-  it('서비스 설명과 안전한 외부 링크를 제공한다', () => {
+  it('프로젝트 정보와 내부 임베드 페이지 경로를 제공한다', async () => {
     // Given: 외부 서비스 정보가 주어졌을 때
-    render(
+    await renderWithRouter(() => (
       <SiteLinkCard
+        slug="skill-navigator"
         index="01"
         title="Skill Navigator"
         description="배움의 방향을 찾는 서비스"
-        href="https://sin.nira.one"
         domain="sin.nira.one"
         monogram="SN"
         accent="cyan"
-      />,
-    )
+      />
+    ))
 
     // When: 사용자가 서비스 카드를 확인하면
-    const link = screen.getByRole('link', { name: 'Skill Navigator 새 탭에서 열기' })
+    const link = await screen.findByRole('link', { name: 'Skill Navigator 페이지로 이동' })
 
-    // Then: 서비스 정보와 새 탭 속성을 확인할 수 있다
+    // Then: 서비스 정보와 새 탭이 아닌 내부 경로를 확인할 수 있다
     expect(screen.getByRole('heading', { name: 'Skill Navigator' })).toBeInTheDocument()
     expect(screen.getByText('배움의 방향을 찾는 서비스')).toBeInTheDocument()
-    expect(link).toHaveAttribute('href', 'https://sin.nira.one')
-    expect(link).toHaveAttribute('target', '_blank')
-    expect(link).toHaveAttribute('rel', 'noopener noreferrer')
+    expect(link).toHaveAttribute('href', '/projects/skill-navigator')
+    expect(link).not.toHaveAttribute('target')
   })
 })

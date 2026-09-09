@@ -22,18 +22,19 @@ describe('Header', () => {
     expect(screen.getByRole('button', { name: '메뉴 열기' })).toHaveAttribute('aria-expanded', 'false')
   })
 
-  it('외부 서비스 링크를 새 탭으로 제공한다', async () => {
+  it('프로젝트 메뉴를 내부 페이지 경로로 제공한다', async () => {
     // Given: 헤더가 표시됐을 때
     await renderWithRouter(Header)
 
     // When: 사용자가 주요 메뉴를 확인하면
     const navigation = await screen.findByRole('navigation', { name: '주요 메뉴' })
     const skillNavigatorLink = within(navigation).getByRole('link', { name: 'Skill Navigator' })
+    const streamingToolsLink = within(navigation).getByRole('link', { name: 'Streaming Tools' })
 
-    // Then: 외부 서비스는 안전한 새 탭 링크로 노출된다
+    // Then: 프로젝트 메뉴는 새 탭이 아닌 내부 경로로 노출된다
     expect(navigation).toContainElement(skillNavigatorLink)
-    expect(skillNavigatorLink).toHaveAttribute('href', 'https://sin.nira.one')
-    expect(skillNavigatorLink).toHaveAttribute('target', '_blank')
-    expect(skillNavigatorLink).toHaveAttribute('rel', 'noopener noreferrer')
+    expect(skillNavigatorLink).toHaveAttribute('href', '/projects/skill-navigator')
+    expect(skillNavigatorLink).not.toHaveAttribute('target')
+    expect(streamingToolsLink).toHaveAttribute('href', '/projects/streaming-tools')
   })
 })

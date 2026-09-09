@@ -1,15 +1,18 @@
 import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 
+import { projects } from '../../features/projects/projects'
+import type { ProjectSlug } from '../../features/projects/projects'
 import styles from './Header.module.css'
 
-const externalLinks = [
-  { label: 'Skill Navigator', href: 'https://sin.nira.one' },
-  { label: 'Toolbox', href: 'https://tools.nira.one' },
-  { label: 'Portfolio', href: 'https://about.nira.one' },
-  { label: 'Dev Note', href: 'https://blog.nira.one' },
-  { label: 'PIU Manager', href: 'https://piu.nira.one' },
-]
+const navLabels: Record<ProjectSlug, string> = {
+  'skill-navigator': 'Skill Navigator',
+  toolbox: 'Toolbox',
+  'dev-portfolio': 'Portfolio',
+  'dev-note': 'Dev Note',
+  'piu-manager': 'PIU Manager',
+  'streaming-tools': 'Streaming Tools',
+}
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -32,10 +35,16 @@ export function Header() {
           >
             Home
           </Link>
-          {externalLinks.map((link) => (
-            <a key={link.href} className={styles.navLink} href={link.href} target="_blank" rel="noopener noreferrer">
-              {link.label}
-            </a>
+          {projects.map((project) => (
+            <Link
+              key={project.slug}
+              to="/projects/$slug"
+              params={{ slug: project.slug }}
+              className={styles.navLink}
+              activeProps={{ className: `${styles.navLink} ${styles.active}` }}
+            >
+              {navLabels[project.slug]}
+            </Link>
           ))}
           <Link
             to="/rhythmtracers"
@@ -67,13 +76,19 @@ export function Header() {
         <Link to="/" className={styles.mobileNavLink} onClick={closeMenu} activeOptions={{ exact: true }}>
           <span>Home</span><span aria-hidden="true">01</span>
         </Link>
-        {externalLinks.map((link, index) => (
-          <a key={link.href} className={styles.mobileNavLink} href={link.href} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
-            <span>{link.label}</span><span aria-hidden="true">0{index + 2} ↗</span>
-          </a>
+        {projects.map((project, index) => (
+          <Link
+            key={project.slug}
+            to="/projects/$slug"
+            params={{ slug: project.slug }}
+            className={styles.mobileNavLink}
+            onClick={closeMenu}
+          >
+            <span>{navLabels[project.slug]}</span><span aria-hidden="true">0{index + 2} →</span>
+          </Link>
         ))}
         <Link to="/rhythmtracers" className={`${styles.mobileNavLink} ${styles.featured}`} onClick={closeMenu}>
-          <span>RhythmTracers</span><span aria-hidden="true">07</span>
+          <span>RhythmTracers</span><span aria-hidden="true">08</span>
         </Link>
       </nav>
     </header>

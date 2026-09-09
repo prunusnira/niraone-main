@@ -1,34 +1,35 @@
+import { Link } from '@tanstack/react-router'
+
 import styles from './SiteLinkCard.module.css'
 
-type SiteAccent = 'cyan' | 'violet' | 'amber' | 'rose' | 'lime'
+type SiteAccent = 'cyan' | 'violet' | 'amber' | 'rose' | 'lime' | 'sky'
 
 export interface SiteLinkCardProps {
+  slug: string
   index: string
   title: string
   description: string
-  href: string
   domain: string
   monogram: string
   accent: SiteAccent
 }
 
 export function SiteLinkCard({
+  slug,
   index,
   title,
   description,
-  href,
   domain,
   monogram,
   accent,
 }: SiteLinkCardProps) {
   return (
-    <a
+    <Link
       className={styles.projectCard}
       data-accent={accent}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${title} 새 탭에서 열기`}
+      to="/projects/$slug"
+      params={{ slug }}
+      aria-label={`${title} 페이지로 이동`}
     >
       <div className={styles.cardTopline}>
         <span>{index}</span>
@@ -39,7 +40,7 @@ export function SiteLinkCard({
         <h2>{title}</h2>
         <p>{description}</p>
       </div>
-      <span className={styles.cardArrow} aria-hidden="true">↗</span>
-    </a>
+      <span className={styles.cardArrow} aria-hidden="true">→</span>
+    </Link>
   )
 }

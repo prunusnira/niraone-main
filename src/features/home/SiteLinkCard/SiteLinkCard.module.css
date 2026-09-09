@@ -24,6 +24,7 @@
 .projectCard[data-accent="amber"] { --card-accent: #ffb74a; }
 .projectCard[data-accent="rose"] { --card-accent: #ff718e; }
 .projectCard[data-accent="lime"] { --card-accent: #a5de42; }
+.projectCard[data-accent="sky"] { --card-accent: #4da3ff; }
 
 .cardTopline {
   display: flex;

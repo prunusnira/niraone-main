@@ -10,13 +10,14 @@ describe('HomePage', () => {
     await renderWithRouter(HomePage)
 
     // When: 사용자가 프로젝트 영역을 확인하면
-    const heading = await screen.findByRole('heading', { name: 'Explore the ecosystem.' })
+    const heading = await screen.findByRole('heading', { name: 'Explore the system.' })
     const projectsSection = heading.closest('section')
 
-    // Then: 다섯 외부 프로젝트와 내부 소개 페이지 링크가 노출된다
+    // Then: 여섯 프로젝트 카드와 내부 소개 페이지 링크가 노출된다
     expect(projectsSection).not.toBeNull()
-    expect(within(projectsSection!).getAllByRole('link')).toHaveLength(6)
-    expect(screen.getByRole('link', { name: 'Skill Navigator 새 탭에서 열기' })).toHaveAttribute('href', 'https://sin.nira.one')
+    expect(within(projectsSection!).getAllByRole('link')).toHaveLength(7)
+    expect(screen.getByRole('link', { name: 'Skill Navigator 페이지로 이동' })).toHaveAttribute('href', '/projects/skill-navigator')
+    expect(screen.getByRole('link', { name: 'Streaming Tools by Nira 페이지로 이동' })).toHaveAttribute('href', '/projects/streaming-tools')
     expect(screen.getByRole('link', { name: /프로젝트 이야기 보기/ })).toHaveAttribute('href', '/rhythmtracers')
   })
 })
