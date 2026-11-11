@@ -31,7 +31,10 @@
 }
 
 .navLink {
+  display: inline-flex;
   padding: 10px 11px;
+  align-items: center;
+  gap: 6px;
   border-radius: 999px;
   color: var(--muted);
   font-size: 0.76rem;
@@ -90,6 +93,19 @@
   border-bottom: 1px solid var(--border);
   font-size: 1rem;
   font-weight: 720;
+}
+
+.mobileNavLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.externalIcon {
+  display: block;
+  width: 0.78em;
+  height: 0.78em;
+  flex: none;
 }
 
 .mobileNavLink span:last-child {

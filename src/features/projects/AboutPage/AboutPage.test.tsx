@@ -20,10 +20,6 @@ describe('AboutPage', () => {
     expect(screen.getByRole('heading', { name: '학력' })).toBeInTheDocument()
     expect(screen.getByText(/월 AWS 비용을 최대 40%/)).toBeInTheDocument()
     expect(screen.getByText(/누적 가입자는 5,000명/)).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /기존 About 사이트 열기/ })).toHaveAttribute(
-      'href',
-      'https://about.nira.one',
-    )
   })
 
   it('About이 아닌 서비스 slug는 404 안내를 보여준다', async () => {

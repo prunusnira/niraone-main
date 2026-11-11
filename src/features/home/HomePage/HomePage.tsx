@@ -1,8 +1,12 @@
 import { projects } from '../../projects/projects'
+import type { Project } from '../../projects/projects'
 import { SiteLinkCard } from '../SiteLinkCard/SiteLinkCard'
 import styles from './HomePage.module.css'
 
-const homeProjects = projects.filter((project) => project.slug !== 'about')
+const homeProjects = projects.filter(
+  (project): project is Project & { url: string } =>
+    project.slug !== 'about' && typeof project.url === 'string',
+)
 
 export function HomePage() {
   return (
@@ -48,14 +52,6 @@ export function HomePage() {
               accent={project.accent}
             />
           ))}
-          <SiteLinkCard
-            slug="rhythm-tracers"
-            url="https://github.com/prunusnira/rhythmtracers-public-release"
-            title="Rhythm Tracers"
-            description="BMS Player for everyone"
-            monogram="RT"
-            accent="sky"
-          />
         </div>
       </section>
     </>

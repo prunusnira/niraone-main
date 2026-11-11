@@ -35,10 +35,9 @@ describe('SiteLinkCard', () => {
     await renderWithRouter(() => (
       <SiteLinkCard
         slug="about"
-        url="https://about.nira.one"
+        url=""
         title="About"
         description="Nira에 대한 소개 페이지"
-        domain="about.nira.one"
         monogram="DP"
         accent="amber"
       />

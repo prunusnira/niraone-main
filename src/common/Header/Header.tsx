@@ -1,22 +1,9 @@
 import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 
-import { projects } from '../../features/projects/projects'
-import type { ProjectSlug } from '../../features/projects/projects'
 import styles from './Header.module.css'
 
-const navLabels: Record<ProjectSlug, string> = {
-  'skill-navigator': 'Skill Navigator',
-  toolbox: 'Toolbox',
-  about: 'About',
-  'dev-note': 'Blog',
-  'piu-manager': 'PIU Manager',
-  'streaming-tools': 'Streaming Tools',
-}
-
-const headerProjects = projects.filter(
-  (project) => project.slug === 'about' || project.slug === 'dev-note',
-)
+const blogUrl = 'https://blog.nira.one'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -30,27 +17,17 @@ export function Header() {
         </Link>
 
         <nav className={styles.desktopNav} aria-label="주요 메뉴">
-          {headerProjects.map((project) => project.slug === 'about' ? (
-            <Link
-              key={project.slug}
-              to="/projects/$slug"
-              params={{ slug: project.slug }}
-              className={styles.navLink}
-              activeProps={{ className: `${styles.navLink} ${styles.active}` }}
-            >
-              {navLabels[project.slug]}
-            </Link>
-          ) : (
-            <a
-              key={project.slug}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.navLink}
-            >
-              {navLabels[project.slug]}
-            </a>
-          ))}
+          <Link
+            to="/projects/$slug"
+            params={{ slug: 'about' }}
+            className={styles.navLink}
+            activeProps={{ className: `${styles.navLink} ${styles.active}` }}
+          >
+            About
+          </Link>
+          <a href={blogUrl} target="_blank" rel="noopener noreferrer" className={styles.navLink}>
+            Blog <ExternalLinkIcon />
+          </a>
         </nav>
 
         <button
@@ -71,29 +48,39 @@ export function Header() {
         className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ''}`}
         aria-label="모바일 메뉴"
       >
-        {headerProjects.map((project, index) => project.slug === 'about' ? (
-          <Link
-            key={project.slug}
-            to="/projects/$slug"
-            params={{ slug: project.slug }}
-            className={styles.mobileNavLink}
-            onClick={closeMenu}
-          >
-            <span>{navLabels[project.slug]}</span><span aria-hidden="true">0{index + 1} →</span>
-          </Link>
-        ) : (
-          <a
-            key={project.slug}
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.mobileNavLink}
-            onClick={closeMenu}
-          >
-            <span>{navLabels[project.slug]}</span><span aria-hidden="true">0{index + 1} →</span>
-          </a>
-        ))}
+        <Link
+          to="/projects/$slug"
+          params={{ slug: 'about' }}
+          className={styles.mobileNavLink}
+          onClick={closeMenu}
+        >
+          <span>About</span><span aria-hidden="true">01 →</span>
+        </Link>
+        <a
+          href={blogUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.mobileNavLink}
+          onClick={closeMenu}
+        >
+          <span className={styles.mobileNavLabel}>Blog <ExternalLinkIcon /></span>
+          <span aria-hidden="true">02 →</span>
+        </a>
       </nav>
     </header>
+  )
+}
+
+function ExternalLinkIcon() {
+  return (
+    <svg className={styles.externalIcon} aria-hidden="true" viewBox="0 0 12 12" fill="none">
+      <path
+        d="M7 2h3v3M10 2 5.5 6.5M9 6.5v3a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-6a.5.5 0 0 1 .5-.5h3"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.25"
+      />
+    </svg>
   )
 }
