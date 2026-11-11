@@ -19,22 +19,9 @@
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   font-weight: 850;
-  letter-spacing: 0.17em;
-}
-
-.wordmarkMark {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border-radius: 50%;
-  color: #07110e;
-  background: #75fbd3;
-  font-size: 0.84rem;
-  letter-spacing: 0;
+  letter-spacing: 0.08em;
 }
 
 .desktopNav {
@@ -56,12 +43,6 @@
 .navLink.active {
   color: var(--foreground);
   background: var(--surface);
-}
-
-.navLinkFeatured {
-  margin-left: 6px;
-  border: 1px solid var(--border);
-  color: var(--foreground);
 }
 
 .menuButton {
@@ -115,10 +96,6 @@
   color: var(--muted);
   font-size: 0.68rem;
   letter-spacing: 0.1em;
-}
-
-.mobileNavLink.featured {
-  color: #089c78;
 }
 
 @media (min-width: 700px) {

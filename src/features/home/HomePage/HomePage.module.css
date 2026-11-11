@@ -60,16 +60,6 @@
   text-transform: uppercase;
 }
 
-.statusDot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 7px;
-  border-radius: 50%;
-  background: #23d59c;
-  box-shadow: 0 0 0 4px rgba(35, 213, 156, 0.12);
-}
-
 .hero h1 {
   max-width: 1000px;
   margin: 0;
@@ -159,8 +149,6 @@
   margin-bottom: 52px;
 }
 
-.sectionHeading .eyebrow { margin-bottom: 12px; }
-
 .sectionHeading h2 {
   margin: 0;
   font-size: clamp(2.4rem, 5.2vw, 5rem);
@@ -179,81 +167,6 @@
 .projectGrid {
   display: grid;
   gap: 14px;
-}
-
-.rhythmCard {
-  position: relative;
-  min-height: 390px;
-  padding: 20px;
-  overflow: hidden;
-  border-radius: 24px;
-  color: #ecfff9;
-  background: #071b18;
-}
-
-.rhythmLines {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: space-around;
-  opacity: 0.7;
-  transform: perspective(400px) rotateX(48deg) scale(1.5);
-  transform-origin: center bottom;
-}
-
-.rhythmLines span {
-  width: 1px;
-  height: 120%;
-  background: linear-gradient(transparent, #75fbd3);
-  box-shadow: 0 0 20px #75fbd3;
-}
-
-.cardTopline {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: rgba(236, 255, 249, 0.58);
-  font-size: 0.62rem;
-  font-weight: 760;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.rhythmContent {
-  position: absolute;
-  z-index: 1;
-  right: 24px;
-  bottom: 24px;
-  left: 24px;
-}
-
-.rhythmContent p {
-  margin: 0 0 8px;
-  color: #75fbd3;
-  font-size: 0.68rem;
-  font-weight: 750;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.rhythmContent h2 {
-  margin: 0 0 25px;
-  font-size: clamp(3rem, 7vw, 5.8rem);
-  line-height: 0.77;
-  letter-spacing: -0.075em;
-  text-transform: uppercase;
-}
-
-.rhythmContent > span {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 0.78rem;
-  font-weight: 700;
 }
 
 .manifesto {
@@ -278,7 +191,6 @@
 @media (min-width: 700px) {
   .pageContainer { width: min(1240px, calc(100% - 72px)); }
   .projectGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .rhythmCard { grid-column: span 2; }
   .sectionHeading { flex-direction: row; align-items: flex-end; justify-content: space-between; }
 }
 
@@ -286,5 +198,4 @@
   .hero { grid-template-columns: 1fr auto; }
   .heroAside { display: block; }
   .projectGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .rhythmCard { grid-column: span 2; }
 }

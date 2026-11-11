@@ -19,6 +19,6 @@ describe('AppLayout', () => {
     // Then: 건너뛰기 링크, 본문, 푸터를 사용할 수 있다
     expect(screen.getByRole('link', { name: '본문으로 건너뛰기' })).toHaveAttribute('href', '#main-content')
     expect(main).toHaveTextContent('테스트 본문')
-    expect(screen.getByText('© 2026 NIRA.ONE')).toBeInTheDocument()
+    expect(screen.getByText('© 2026 Studio Nira')).toBeInTheDocument()
   })
 })

@@ -1,0 +1,178 @@
+.aboutPage {
+  display: grid;
+  width: min(1120px, calc(100% - 40px));
+  margin-inline: auto;
+  padding-block: clamp(64px, 9vw, 112px) 120px;
+  gap: 72px;
+}
+
+.intro {
+  max-width: 820px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: clamp(3.2rem, 9vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+}
+
+.lead {
+  max-width: 760px;
+  margin: 28px 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  line-height: 1.85;
+  word-break: keep-all;
+}
+
+.externalLink {
+  display: inline-flex;
+  margin-top: 24px;
+  padding-bottom: 5px;
+  align-items: center;
+  gap: 9px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.contentSection {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.32fr) minmax(0, 1fr);
+  padding-top: 24px;
+  gap: 36px;
+  border-top: 1px solid var(--border);
+}
+
+.sectionHeading h2 {
+  margin: 0;
+  font-size: clamp(1.55rem, 2.5vw, 2.2rem);
+  letter-spacing: -0.045em;
+}
+
+.experienceList,
+.educationList {
+  display: grid;
+  gap: 26px;
+}
+
+.experienceCard {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.35fr) minmax(0, 1fr);
+  padding-bottom: 24px;
+  gap: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.period {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.experienceMeta h3,
+.skillCard h3,
+.projectCard h3,
+.educationItem h3 {
+  margin: 8px 0 0;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.organization {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.highlights {
+  display: grid;
+  margin: 0;
+  padding-left: 18px;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.75;
+}
+
+.skillGrid,
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.skillCard,
+.projectCard {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-raised);
+}
+
+.skillCard h3,
+.projectCard h3 {
+  margin-top: 0;
+}
+
+.skillCard p,
+.projectCard > p:last-child,
+.educationItem p:last-child {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.75;
+}
+
+.projectCard .period {
+  margin-bottom: 12px;
+}
+
+.educationItem {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.35fr) minmax(0, 1fr);
+  padding-bottom: 18px;
+  gap: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.educationItem h3 {
+  margin-top: 0;
+}
+
+.educationItem p:last-child {
+  margin-top: 4px;
+}
+
+@media (max-width: 720px) {
+  .aboutPage {
+    width: min(100% - 36px, 600px);
+    padding-block: 56px 88px;
+    gap: 56px;
+  }
+
+  .contentSection,
+  .experienceCard,
+  .educationItem {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .skillGrid,
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -8,11 +8,15 @@ import styles from './Header.module.css'
 const navLabels: Record<ProjectSlug, string> = {
   'skill-navigator': 'Skill Navigator',
   toolbox: 'Toolbox',
-  'dev-portfolio': 'Portfolio',
-  'dev-note': 'Dev Note',
+  about: 'About',
+  'dev-note': 'Blog',
   'piu-manager': 'PIU Manager',
   'streaming-tools': 'Streaming Tools',
 }
+
+const headerProjects = projects.filter(
+  (project) => project.slug === 'about' || project.slug === 'dev-note',
+)
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -22,20 +26,11 @@ export function Header() {
     <header className={styles.siteHeader}>
       <div className={styles.headerInner}>
         <Link to="/" className={styles.wordmark} onClick={closeMenu}>
-          <span className={styles.wordmarkMark} aria-hidden="true">N</span>
-          <span>NIRA</span>
+          Studio Nira
         </Link>
 
         <nav className={styles.desktopNav} aria-label="주요 메뉴">
-          <Link
-            to="/"
-            className={styles.navLink}
-            activeProps={{ className: `${styles.navLink} ${styles.active}` }}
-            activeOptions={{ exact: true }}
-          >
-            Home
-          </Link>
-          {projects.map((project) => (
+          {headerProjects.map((project) => project.slug === 'about' ? (
             <Link
               key={project.slug}
               to="/projects/$slug"
@@ -45,14 +40,17 @@ export function Header() {
             >
               {navLabels[project.slug]}
             </Link>
+          ) : (
+            <a
+              key={project.slug}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.navLink}
+            >
+              {navLabels[project.slug]}
+            </a>
           ))}
-          <Link
-            to="/rhythmtracers"
-            className={`${styles.navLink} ${styles.navLinkFeatured}`}
-            activeProps={{ className: `${styles.navLink} ${styles.navLinkFeatured} ${styles.active}` }}
-          >
-            RhythmTracers
-          </Link>
         </nav>
 
         <button
@@ -73,10 +71,7 @@ export function Header() {
         className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ''}`}
         aria-label="모바일 메뉴"
       >
-        <Link to="/" className={styles.mobileNavLink} onClick={closeMenu} activeOptions={{ exact: true }}>
-          <span>Home</span><span aria-hidden="true">01</span>
-        </Link>
-        {projects.map((project, index) => (
+        {headerProjects.map((project, index) => project.slug === 'about' ? (
           <Link
             key={project.slug}
             to="/projects/$slug"
@@ -84,12 +79,20 @@ export function Header() {
             className={styles.mobileNavLink}
             onClick={closeMenu}
           >
-            <span>{navLabels[project.slug]}</span><span aria-hidden="true">0{index + 2} →</span>
+            <span>{navLabels[project.slug]}</span><span aria-hidden="true">0{index + 1} →</span>
           </Link>
+        ) : (
+          <a
+            key={project.slug}
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.mobileNavLink}
+            onClick={closeMenu}
+          >
+            <span>{navLabels[project.slug]}</span><span aria-hidden="true">0{index + 1} →</span>
+          </a>
         ))}
-        <Link to="/rhythmtracers" className={`${styles.mobileNavLink} ${styles.featured}`} onClick={closeMenu}>
-          <span>RhythmTracers</span><span aria-hidden="true">08</span>
-        </Link>
       </nav>
     </header>
   )

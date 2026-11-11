@@ -12,8 +12,7 @@ export function AppLayout() {
         <Outlet />
       </main>
       <footer className={styles.siteFooter}>
-        <span>© 2026 NIRA</span>
-        <span>Built with love and React</span>
+        <span>© 2026 Studio Nira</span>
       </footer>
     </div>
   )

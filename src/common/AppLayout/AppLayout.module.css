@@ -1,6 +1,6 @@
 .appShell {
   min-height: 100vh;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .skipLink {
@@ -27,7 +27,7 @@
   justify-content: space-between;
   border-top: 1px solid var(--border);
   color: var(--muted);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 650;
   letter-spacing: 0.08em;
   text-transform: uppercase;

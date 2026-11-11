@@ -38,6 +38,8 @@
 }
 
 .cardDomain {
+  font-size: 0.72rem;
+  font-weight: 650;
   letter-spacing: 0;
   text-transform: lowercase;
 }

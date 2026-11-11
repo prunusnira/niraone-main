@@ -1,12 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { ProjectEmbedPage } from '../../features/projects/ProjectEmbedPage/ProjectEmbedPage'
+import { AboutPage } from '../../features/projects/AboutPage/AboutPage'
 
 export const Route = createFileRoute('/projects/$slug')({
-  component: ProjectEmbedRoute,
+  component: AboutRoute,
 })
 
-function ProjectEmbedRoute() {
+function AboutRoute() {
   const { slug } = Route.useParams()
-  return <ProjectEmbedPage slug={slug} />
+  return <AboutPage slug={slug} />
 }

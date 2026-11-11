@@ -22,19 +22,21 @@ describe('Header', () => {
     expect(screen.getByRole('button', { name: '메뉴 열기' })).toHaveAttribute('aria-expanded', 'false')
   })
 
-  it('프로젝트 메뉴를 내부 페이지 경로로 제공한다', async () => {
+  it('About과 Blog 메뉴만 표시하고 각각 맞는 경로로 연결한다', async () => {
     // Given: 헤더가 표시됐을 때
     await renderWithRouter(Header)
 
     // When: 사용자가 주요 메뉴를 확인하면
     const navigation = await screen.findByRole('navigation', { name: '주요 메뉴' })
-    const skillNavigatorLink = within(navigation).getByRole('link', { name: 'Skill Navigator' })
-    const streamingToolsLink = within(navigation).getByRole('link', { name: 'Streaming Tools' })
+    const aboutLink = within(navigation).getByRole('link', { name: 'About' })
+    const blogLink = within(navigation).getByRole('link', { name: 'Blog' })
 
-    // Then: 프로젝트 메뉴는 새 탭이 아닌 내부 경로로 노출된다
-    expect(navigation).toContainElement(skillNavigatorLink)
-    expect(skillNavigatorLink).toHaveAttribute('href', '/projects/skill-navigator')
-    expect(skillNavigatorLink).not.toHaveAttribute('target')
-    expect(streamingToolsLink).toHaveAttribute('href', '/projects/streaming-tools')
+    // Then: About과 Blog만 남고 서비스 외부 링크는 직접 열 수 있다
+    expect(within(navigation).getAllByRole('link')).toHaveLength(2)
+    expect(aboutLink).toHaveAttribute('href', '/projects/about')
+    expect(blogLink).toHaveAttribute('href', 'https://blog.nira.one')
+    expect(blogLink).toHaveAttribute('target', '_blank')
+    expect(blogLink).toHaveAttribute('rel', 'noopener noreferrer')
+    expect(screen.getByRole('link', { name: 'Studio Nira' })).toBeInTheDocument()
   })
 })
